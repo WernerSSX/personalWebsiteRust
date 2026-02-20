@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Home — Werner Site{% endblock %}
+
+{% block content %}
+<img src="/static/images/profile.jpg"
+     alt="Photo of {{ author }}"
+     style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover;">
+<h1>{{ author }}'s Profile Page</h1>
+<p class="muted">
+     Please give me a job to feed my imaginary girlfriend.
+</p>
+
+<br>
+
+<h1>About Me</h1>
+<p>
+     Hi! Welcome to my website created using the Actix Framework in Rust.
+</p>
+<p>
+     Please enjoy the posts and games here.
+</p>
+<br>
+<h3>Thanks for coming. Have a donut.</h3>
+<!-- The donut canvas. The background is transparent so your page
+background shows through. -->
+<div style="display: flex; justify-content: center; margin: 40px 0;">
+<canvas id="donut-canvas" width="300" height="300"
+       style="border-radius: 8px;"></canvas>
+</div>
+
+<!-- Load the donut script and start it once the page is ready. -->
+<script src="/static/js/donut.js"></script>
+<script src="/static/js/init-donut.js"></script>
+<script>
+// Wait until the canvas element exists in the DOM, then start.
+document.addEventListener("DOMContentLoaded", function() {
+   initDonut("donut-canvas");
+});
+</script>
+<br>
+<p class="muted">
+     This website was created on 19 Feb 2026 and may be outdated.
+</p>
+<p class="muted">
+     Please do not use Metasploit on my website. Thanks.
+</p>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}{{ game.title }} — My Site{% endblock %}
+
+{% block content %}
+<a href="/games" style="color: #8a847c; font-size: 0.85rem;">← Back to games</a>
+
+<h1 style="margin-top: 16px;">{{ game.title }}</h1>
+{% if game.summary %}
+    <p class="muted">{{ game.summary }}</p>
+{% endif %}
+
+<div style="display: flex; flex-direction: column; align-items: center; margin: 32px 0;">
+    <div style="position: relative; width: {{ game.width }}px; max-width: 100%;
+                background: #000; border: 1px solid #2a2725; border-radius: 6px; overflow: hidden;">
+        <canvas id="game-canvas"
+                width="{{ game.width }}"
+                height="{{ game.height }}"
+                style="display: block; width: 100%; height: auto;
+                       image-rendering: pixelated; cursor: crosshair;">
+        </canvas>
+        <div id="game-status"
+             style="position: absolute; inset: 0; display: flex;
+                    align-items: center; justify-content: center;
+                    background: rgba(0,0,0,0.85); color: #d4a574;
+                    font-family: monospace; font-size: 0.9rem;
+                    cursor: pointer; z-index: 10;">
+            Click to start
+        </div>
+    </div>
+    <p style="margin-top: 12px; font-size: 0.8rem; color: #8a847c; font-family: monospace;">
+        Arrow keys / WASD to move · Space to act · Click canvas to focus
+    </p>
+</div>
+
+<script src="/static/js/engine.js"></script>
+<script src="/static/js/init-game.js"></script>
+{% endblock %}

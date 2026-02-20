@@ -1,0 +1,19 @@
+# Compiled output — this folder can be 1GB+ and is platform-specific.
+# Anyone who clones your repo will run `cargo build` themselves.
+/target
+
+# Environment files may contain secrets (API keys, passwords).
+.env
+
+# macOS system files
+.DS_Store
+
+# Editor-specific folders
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# TLS certificates (if you ever generate them locally)
+*.pem
+*.key

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }} — My Site{% endblock %}
+
+{% block content %}
+<a href="/blog" style="color: #8a847c; font-size: 0.85rem;">← Back to blog</a>
+
+<h1 style="margin-top: 16px;">{{ post.title }}</h1>
+<p class="muted" style="font-size: 0.85rem;">{{ post.date }} · {{ post.reading_time }} min read</p>
+
+<div style="margin-top: 32px;">
+    {{ post.html_content | safe }}
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Blog — My Site{% endblock %}
+
+{% block content %}
+<h1>Blog</h1>
+
+{% if posts | length == 0 %}
+    <p class="muted">No posts yet.</p>
+{% else %}
+    {% for post in posts %}
+    <article style="margin-bottom: 32px; padding-bottom: 32px; border-bottom: 1px solid #2a2725;">
+        <a href="/blog/{{ post.slug }}" style="color: inherit; text-decoration: none;">
+            <h2 style="margin-bottom: 4px;">{{ post.title }}</h2>
+            <p class="muted" style="margin: 0; font-size: 0.85rem;">
+                {{ post.date }} · {{ post.reading_time }} min read
+            </p>
+            {% if post.summary %}
+                <p class="muted" style="margin-top: 8px;">{{ post.summary }}</p>
+            {% endif %}
+        </a>
+    </article>
+    {% endfor %}
+{% endif %}
+{% endblock %}
