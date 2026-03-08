@@ -1,36 +1,22 @@
 +++
-title = "Introduction"
+title = "Website Introduction"
 slug = "introduction"
 date = "2026-02-19"
 summary = "More about myself"
 +++
 
-NUS High 2020
-CDO 2022
-BCE NTU 2027
+Hello!
 
-GPA (Business) : 4.51
-GPA (Computer Engineering): 4.41
+Once again, thank you for taking the time to read this.
 
-Internships (FIFO):
-1. Shopback (2025)
-2. PhillipCapital (2024)
-3. ApetMart LP (2024)
-4. OCBC (2022)
+This website may not be the most professional as it is meant for my personal learning purposes.
 
-Projects (LIFO):
-1. Built 2-player arcade machine using RetroPi (2020)
-2. ML Model using PolynomialReg and RandomForest to predict Liver Cirrhosis (2024)
-3. Built Memorize Bus Stops Game in Dart using Flutter Framework (2025)
-4. Built Personal Computer with Arch Linux OS (2025)
-5. Configured STM32 for Multidisciplinary Design Project (2025)
-6. Configured MSP432 for SC2107 (2025)
-7. Built Personal Website (2026)
+This is my first project, completed (partially) with Claude. I asked it to create a plan for me and simply followed the plan step-by-step. It took me about a day to verify the output, set up the VPS (Hetzner) and domain name (Cloudflare), and get the website working. The costs should amount to approximately $22/year.
 
-Skills:
-1. 3D Printing
-2. Competitive Programming (In Progress)
-3. FPGA (In Progress)
+I went with Actix Web as Rust is the best programming language (obviously). I may simply leave this website be, or come back to it and play around with it once I am bored of doing Leetcode.
 
-Notable Achievements:
-1. Standard Chartered Marathon (2025)
+Note that I do not care so much about design.
+
+If you are interested of having a website like this, I could send the instructions.md over. Don't be afraid to ask :D
+
+XOXO
