@@ -5,11 +5,11 @@ pub fn security_headers() -> DefaultHeaders {
         .add((
             "Content-Security-Policy",
             "default-src 'self'; \
-            script-src 'self' https://unpkg.com 'wasm-unsafe-eval'; \
+            script-src 'self' 'unsafe-inline' 'unsafe-eval' 'wasm-unsafe-eval'; \
             style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
             font-src 'self' https://fonts.gstatic.com; \
             img-src 'self' data:; \
-            connect-src 'self' https://unpkg.com; \
+            frame-src 'self'; \
             frame-ancestors 'none'; \
             base-uri 'self'; \
             form-action 'self'",
