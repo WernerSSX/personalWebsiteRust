@@ -1,17 +1,245 @@
 /* static/css/style.css */
 body {
-    font-family: Georgia, serif;
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 40px 20px;
-    background: #0c0b0a;
-    color: #e8e4df;
-    line-height: 1.7;
+    font-family: 'VT323', monospace;
+    color: #ffffff;
+    background: linear-gradient(180deg, #0a0a2e 0%, #1a1a5e 100%);
+    min-height: 100vh;
+    background-attachment: fixed;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
 }
 
-nav       { margin-bottom: 40px; font-size: 0.9rem; }
-nav a     { color: #d4a574; text-decoration: none; margin-right: 16px; }
-nav a:hover { text-decoration: underline; }
-h1        { font-size: 2.2rem; margin-bottom: 0.5rem; }
+nav, footer, .muted { font-size: 24px; }
+h1 { font-size: 48px; }   /* was likely 2.2rem */
+h2 { font-size: 32px; }
 .muted    { color: #8a847c; }
-footer    { margin-top: 60px; color: #8a847c; font-size: 0.8rem; }
+p, a, li { font-size: 24px; }
+
+a {
+    color: #5eead4;          /* teal/cyan — visible on both blue bg and white boxes */
+    text-decoration: none;
+}
+a:hover {
+    color: #99f6e4;          /* lighter teal on hover */
+    text-decoration: underline;
+}
+
+/* Muted text — light grey that works on both backgrounds */
+.muted {
+    color: #a0a0c0;          /* soft lavender-grey */
+}
+
+.rpg-box {
+    background: #ffffff;
+    color: #1a1a2e;                     /* dark navy text inside the box */
+    border: 3px solid #c0c0d0;          /* light grey border */
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 24px;
+    /* A subtle double-border effect like FF dialog boxes: */
+    box-shadow:
+        inset 0 0 0 2px #e0e0f0,        /* inner highlight */
+        0 4px 16px rgba(0, 0, 0, 0.3);   /* outer shadow for depth */
+}
+
+/* Links inside the box need to contrast with the white background */
+.rpg-box a {
+    color: #2563eb;          /* strong blue — readable on white */
+}
+.rpg-box a:hover {
+    color: #1d4ed8;          /* darker blue on hover */
+}
+
+/* Muted text inside the box */
+.rpg-box .muted {
+    color: #6b7280;          /* medium grey on white background */
+}
+
+/* Headings inside the box */
+.rpg-box h1,
+.rpg-box h2,
+.rpg-box h3 {
+    color: #1a1a2e;
+}
+
+.page-container {
+    max-width: 700px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.profile-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.side-nav {
+    position: fixed;
+    right: 20px;
+    top: 40px;
+    width: 160px;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    z-index: 100;
+}
+
+.side-nav a {
+    display: block;
+    padding: 6px 0;
+}
+
+.side-nav .nav-arrow {
+    color: #c0c0d0;
+    margin-right: 6px;
+}
+
+/* FF-style stats panel */
+.ff-stats {
+    font-family: 'VT323', monospace;
+    font-size: 20px;
+    color: #1a1a2e;
+    min-width: 200px;
+}
+
+.ff-stats .stat-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.ff-stats .stat-label {
+    width: 32px;
+    font-weight: bold;
+    color: #6b7280;
+}
+
+.ff-stats .stat-value {
+    margin-left: 8px;
+    color: #1a1a2e;
+}
+
+.ff-stats .stat-bar-bg {
+    flex: 1;
+    height: 14px;
+    background: #2a2a3e;
+    border-radius: 3px;
+    margin-left: 8px;
+    overflow: hidden;
+}
+
+.ff-stats .stat-bar-fill-hp {
+    height: 100%;
+    background: #22c55e;   /* green for HP */
+    border-radius: 3px;
+}
+
+.ff-stats .stat-bar-fill-mp {
+    height: 100%;
+    background: #3b82f6;   /* blue for MP */
+    border-radius: 3px;
+}
+
+.ff-stats .stat-bar-fill-exp {
+    height: 100%;
+    background: #f59e0b;   /* amber for EXP */
+    border-radius: 3px;
+}
+
+.ff-stats .char-name {
+    font-size: 28px;
+    font-weight: bold;
+    color: #1a1a2e;
+    margin-bottom: 4px;
+}
+
+.ff-stats .char-level {
+    font-size: 22px;
+    color: #6b7280;
+    margin-bottom: 12px;
+}
+
+.suplex-wrap {
+    display: flex;
+    justify-content: center;
+    margin: 32px 0;
+}
+
+/* 3D play button for resume download */
+.play-btn-3d {
+    position: relative;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-top: 24px solid transparent;
+    border-bottom: 24px solid transparent;
+    border-left: 40px solid #22c55e;
+    cursor: pointer;
+    transition: transform 0.15s, filter 0.15s;
+    filter: drop-shadow(3px 3px 0px #15803d)
+            drop-shadow(5px 5px 2px rgba(0, 0, 0, 0.3));
+    flex-shrink: 0;
+    align-self: center;
+}
+
+.play-btn-3d:hover {
+    transform: scale(1.1);
+    border-left-color: #4ade80;
+    filter: drop-shadow(4px 4px 0px #16a34a)
+            drop-shadow(6px 6px 3px rgba(0, 0, 0, 0.4));
+}
+
+.play-btn-3d:active {
+    transform: scale(0.95);
+    filter: drop-shadow(1px 1px 0px #15803d)
+            drop-shadow(2px 2px 1px rgba(0, 0, 0, 0.3));
+}
+
+/* Tooltip for play button */
+.play-btn-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}
+
+.play-btn-wrap .tooltip {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a1a2e;
+    color: #ffffff;
+    font-family: 'VT323', monospace;
+    font-size: 18px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    transition: opacity 0.2s, visibility 0.2s;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.play-btn-wrap .tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #1a1a2e;
+}
+
+.play-btn-wrap:hover .tooltip {
+    visibility: visible;
+    opacity: 1;
+}

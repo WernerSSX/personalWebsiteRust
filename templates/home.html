@@ -3,27 +3,65 @@
 {% block title %}Home — Werner Site{% endblock %}
 
 {% block content %}
-<img src="/static/images/profile.jpg"
-     alt="Photo of {{ author }}"
-     style="width: 200px; height: 200px; border-radius: 20%; object-fit: cover;">
-<h1>{{ author }}'s Profile Page</h1>
+<div class="profile-row">
+     <div style="width: 150px; height: 150px; border-radius: 20%;
+                 overflow: hidden; flex-shrink: 0;">
+         <img src="/static/images/Arch.jpeg"
+              alt="Photo of {{ author }}"
+              style="width: 100%; height: 100%; object-fit: cover;">
+     </div>
+     <div class="ff-stats">
+         <div class="char-name">{{ author }}</div>
+         <div class="char-level">LV 24</div>
+         <div class="stat-row">
+             <span class="stat-label">HP</span>
+             <span class="stat-value">100/100</span>
+             <div class="stat-bar-bg"><div class="stat-bar-fill-hp" style="width: 100%;"></div></div>
+         </div>
+         <div class="stat-row">
+             <span class="stat-label">MP</span>
+             <span class="stat-value">30/30</span>
+             <div class="stat-bar-bg"><div class="stat-bar-fill-mp" style="width: 100%;"></div></div>
+         </div>
+         <div class="stat-row">
+             <span class="stat-label">EXP</span>
+             <div class="stat-bar-bg"><div class="stat-bar-fill-exp" style="width: 20%;"></div></div>
+         </div>
+     </div>
+     <div class="play-btn-wrap">
+         <span class="tooltip">Click me to download resume</span>
+         <a href="/static/docs/resume.pdf" download class="play-btn-3d"></a>
+     </div>
+ </div>
 <p class="muted">
-     Improving one step at a time daily
+     Eat well. Sleep well. Study well.
      <br>
      <br>
-     NTU BIZ / CE 2027 <br>
+     1.5 Years Dev Experience <br>
+     NTU BIZ / CE 2027 (First Class Honours) <br>
      NUSH 2020 <br>
      <br>
+     Web Dev, ML, STM32, MSP432, Arduino, 3D Printing, Linux
+     <br>
+     Rust, C, C++, Go, Java, Javascript, Python, R, VBA
 </p>
-
+<div class="suplex-wrap">
+     <canvas id="suplex-canvas" width="400" height="200"
+             style="border-radius: 8px; image-rendering: pixelated;"></canvas>
+</div>
+<script src="/static/js/suplex.js"></script>
+<script src="/static/js/init-suplex.js"></script>
 <h1>The Mission</h1>
 <p>
-     Hi! I chose to study my degree as I enjoyed tinkering and building things.
+     Build meaningful systems to make the World a happier place.
      <br>
-     I am here to build meaningful systems that make the world a better place to live in.
+     To achieve this:
      <br>
+     1. Learn relentlessly
      <br>
-     Please enjoy the posts and games here.
+     2. Meet interesting people
+     <br>
+     3. Take the initiative
 </p>
 <br>
 <h3>Thanks for coming. Have a donut. 🍩</h3>
@@ -37,12 +75,6 @@ background shows through. -->
 <!-- Load the donut script and start it once the page is ready. -->
 <script src="/static/js/donut.js"></script>
 <script src="/static/js/init-donut.js"></script>
-<script>
-// Wait until the canvas element exists in the DOM, then start.
-document.addEventListener("DOMContentLoaded", function() {
-   initDonut("donut-canvas");
-});
-</script>
 <br>
 <p class="muted">
      This website was created on 19 Feb 2026. Design is not my primary concern.

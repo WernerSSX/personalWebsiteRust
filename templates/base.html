@@ -5,18 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}My Site{% endblock %}</title>
     <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <a href="/games">Games</a>
+    <!-- Navigation box -->
+    <nav class="rpg-box side-nav">
+        <span class="nav-arrow">▸</span><a href="/">Home</a>
+        <span class="nav-arrow">▸</span><a href="/blog">Blog</a>
+        <span class="nav-arrow">▸</span><a href="/games">Games</a>
     </nav>
+    <div class="page-container">
+        <!-- Main content box -->
+        <div class="rpg-box">
+            {% block content %}{% endblock %}
+        </div>
 
-    {% block content %}{% endblock %}
-
-    <footer>
-        <p>&copy; 2026 {{ author }}</p>
-    </footer>
+        <!-- Footer box -->
+        <footer class="rpg-box" style="padding: 16px 32px; text-align: center;">
+            <p class="muted" style="margin: 0;">&copy; 2026 {{ author }}</p>
+        </footer>
+    </div>
 </body>
 </html>
