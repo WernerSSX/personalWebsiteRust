@@ -11,28 +11,22 @@
 {% endif %}
 
 <div style="display: flex; flex-direction: column; align-items: center; margin: 32px 0;">
-    <div style="position: relative; width: {{ game.width }}px; max-width: 100%;
-                background: #000; border: 1px solid #2a2725; border-radius: 6px; overflow: hidden;">
-        <canvas id="game-canvas"
-                width="{{ game.width }}"
-                height="{{ game.height }}"
-                style="display: block; width: 100%; height: auto;
-                       image-rendering: pixelated; cursor: crosshair;">
-        </canvas>
-        <div id="game-status"
-             style="position: absolute; inset: 0; display: flex;
-                    align-items: center; justify-content: center;
-                    background: rgba(0,0,0,0.85); color: #d4a574;
-                    font-family: monospace; font-size: 0.9rem;
-                    cursor: pointer; z-index: 10;">
-            Click to start
-        </div>
-    </div>
-    <p style="margin-top: 12px; font-size: 0.8rem; color: #8a847c; font-family: monospace;">
-        Arrow keys / WASD to move · Space to act · Click canvas to focus
+    <!--
+        The game runs inside an iframe that points to the static HTML
+        wrapper in /static/games/slug/index.html. The iframe isolates
+        the game's full-page canvas from the rest of your site layout.
+    -->
+    <iframe
+        src="/static/games/{{ game.slug }}/index.html"
+        sandbox="allow-scripts allow-same-origin"
+        style="width: 520px; max-width: 100%; aspect-ratio: 4/3;
+               border: 1px solid #2a2725; border-radius: 6px;
+               background: #0a0a0c;"
+        allowfullscreen>
+    </iframe>
+    <p style="margin-top: 12px; font-size: 0.8rem; color: #8a847c;
+              font-family: monospace;">
+        Arrow keys / WASD to move · Space to act · Click game to focus
     </p>
 </div>
-
-<script src="/static/js/engine.js"></script>
-<script src="/static/js/init-game.js"></script>
 {% endblock %}

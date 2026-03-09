@@ -19,8 +19,7 @@ After some time, I went for 2 separate Codeforces Div 3 contests and solved like
 
 Anyways, here are some insights that I derived from these few weeks:
 
-########################################################################################################################
-
+##################################################################################
 Most Div 3 contest questions are all from a pool of these topics:
 1. Arrays & Sort
 2. Binary Search
@@ -39,7 +38,7 @@ We should also tune our testcase to account for min, max and a number in between
 Maybe link to the Codeforces API for faster submission.?
 -> I may try this out next time
 
-########################################################################################################################
+##################################################################################
 
 Yes it has been pretty fun overall (until I have to implement Linked Lists in Rust).
 

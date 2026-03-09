@@ -1,0 +1,1 @@
+load("pong.wasm");
