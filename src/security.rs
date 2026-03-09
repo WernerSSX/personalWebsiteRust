@@ -15,13 +15,19 @@ pub fn common_headers() -> DefaultHeaders {
         ))
 }
 
-/// Strict CSP for normal pages (no eval, no WASM eval, no inline scripts).
+/// Strict CSP for normal pages (no eval, no WASM eval).
+///
+/// Cloudflare Web Analytics injects an inline script that loads beacon.min.js.
+/// We allowlist the Cloudflare domain and use the known script hash so we
+/// don't need 'unsafe-inline' for script-src.
 pub fn strict_csp() -> DefaultHeaders {
     DefaultHeaders::new()
         .add((
             "Content-Security-Policy",
             "default-src 'self'; \
-            script-src 'self'; \
+            script-src 'self' https://static.cloudflareinsights.com \
+                'sha256-yjIiEpYDm6GWEi1LxBAGjW/cuvY3NCJ4rbP90XyDlmg='; \
+            connect-src 'self' https://cloudflareinsights.com; \
             style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
             font-src 'self' https://fonts.gstatic.com; \
             img-src 'self' data:; \
@@ -33,12 +39,19 @@ pub fn strict_csp() -> DefaultHeaders {
 }
 
 /// Relaxed CSP for game iframe pages that need WASM execution.
+///
+/// Cloudflare also injects its analytics snippet into these static HTML
+/// responses, so we allow the same Cloudflare script hash + domain here
+/// to prevent the injection from causing a blocking CSP error that could
+/// interfere with WASM loading.
 pub fn game_csp() -> DefaultHeaders {
     DefaultHeaders::new()
         .add((
             "Content-Security-Policy",
             "default-src 'self'; \
-            script-src 'self' 'wasm-unsafe-eval'; \
+            script-src 'self' 'wasm-unsafe-eval' https://static.cloudflareinsights.com \
+                'sha256-yjIiEpYDm6GWEi1LxBAGjW/cuvY3NCJ4rbP90XyDlmg='; \
+            connect-src 'self' https://cloudflareinsights.com; \
             style-src 'self' 'unsafe-inline'; \
             img-src 'self' data: blob:; \
             frame-ancestors 'self'; \
