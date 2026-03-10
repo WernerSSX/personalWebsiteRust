@@ -10,11 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Mobile hamburger -->
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">☰</button>
+
     <!-- Navigation box -->
-    <nav class="rpg-box side-nav">
-        <span class="nav-arrow">▸</span><a href="/">Home</a>
-        <span class="nav-arrow">▸</span><a href="/blog">Blog</a>
-        <span class="nav-arrow">▸</span><a href="/games">Games</a>
+    <nav class="rpg-box side-nav" id="side-nav">
+        <div class="nav-item"><span class="nav-arrow">▸</span><a href="/">Home</a></div>
+        <div class="nav-item"><span class="nav-arrow">▸</span><a href="/blog">Blog</a></div>
+        <div class="nav-item"><span class="nav-arrow">▸</span><a href="/games">Games</a></div>
+        <div class="nav-item"><span class="nav-arrow">▸</span><a href="/counter">Counter</a></div>
     </nav>
     <div class="page-container">
         <!-- Main content box -->
@@ -27,5 +31,6 @@
             <p class="muted" style="margin: 0;">&copy; 2026 {{ author }}</p>
         </footer>
     </div>
+    <script src="/static/js/nav-toggle.js"></script>
 </body>
 </html>

@@ -62,6 +62,18 @@ async fn blog_post(tmpl: web::Data<Tera>, state: web::Data<AppState>, path: web:
         .body(body)
 }
 
+async fn counter(tmpl: web::Data<Tera>, state: web::Data<AppState>) -> HttpResponse {
+    let mut ctx = Context::new();
+    ctx.insert("author", &state.author);
+
+    let body = tmpl.render("counter.html", &ctx)
+        .expect("Template rendering failed");
+
+    HttpResponse::Ok()
+        .content_type("text/html; charset=utf-8")
+        .body(body)
+}
+
 async fn game_index(
     tmpl: web::Data<Tera>,
     state: web::Data<AppState>,
@@ -143,6 +155,7 @@ async fn main() -> std::io::Result<()> {
                     .route("/", web::get().to(home))
                     .route("/blog", web::get().to(blog_index))
                     .route("/blog/{slug}", web::get().to(blog_post))
+                    .route("/counter", web::get().to(counter))
                     .route("/games", web::get().to(game_index))
                     .route("/games/{slug}", web::get().to(game_play))
             )

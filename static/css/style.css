@@ -100,6 +100,11 @@ a:hover {
     margin-right: 6px;
 }
 
+.nav-item {
+    display: flex;
+    align-items: center;
+}
+
 /* FF-style stats panel */
 .ff-stats {
     font-family: 'VT323', monospace;
@@ -198,6 +203,7 @@ a:hover {
 /* Tooltip for play button */
 .play-btn-wrap {
     position: relative;
+    top: 60px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -236,4 +242,119 @@ a:hover {
 .play-btn-wrap:hover .tooltip {
     visibility: visible;
     opacity: 1;
+}
+
+/* ─── Responsive ─── */
+
+/* Hamburger button (hidden on desktop) */
+.nav-hamburger {
+    display: none;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 200;
+    background: #ffffff;
+    border: 2px solid #c0c0d0;
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-family: 'VT323', monospace;
+    font-size: 28px;
+    color: #1a1a2e;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Tablet: ≤900px — shrink side-nav, reduce page max-width offset */
+@media (max-width: 900px) {
+    .side-nav {
+        width: 120px;
+        right: 10px;
+        padding: 14px;
+    }
+    .page-container {
+        max-width: 600px;
+    }
+}
+
+/* Mobile: ≤600px — collapse side-nav to overlay, stack profile-row */
+@media (max-width: 600px) {
+    .nav-hamburger {
+        display: block;
+    }
+
+    .side-nav {
+        position: fixed;
+        top: 0;
+        right: -260px;          /* hidden off-screen by default */
+        width: 220px;
+        height: 100vh;
+        max-height: 100vh;
+        padding: 60px 20px 20px;
+        background: #ffffff;
+        border-radius: 0;
+        border-left: 3px solid #c0c0d0;
+        box-shadow: -4px 0 16px rgba(0,0,0,0.3);
+        transition: right 0.3s ease;
+    }
+
+    .side-nav.open {
+        right: 0;
+    }
+
+    .side-nav a {
+        font-size: 22px;
+        color: #1a1a2e;
+    }
+
+    .side-nav .nav-arrow {
+        color: #6b7280;
+    }
+
+    .page-container {
+        max-width: 100%;
+        margin: 20px auto;
+        padding: 0 12px;
+    }
+
+    .rpg-box {
+        padding: 20px;
+        border-radius: 12px;
+    }
+
+    h1 { font-size: 36px; }
+    h2 { font-size: 26px; }
+    p, a, li, nav, footer, .muted { font-size: 20px; }
+
+    /* Stack profile row vertically */
+    .profile-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+    }
+
+    .ff-stats {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .ff-stats .char-name {
+        text-align: center;
+    }
+
+    .ff-stats .char-level {
+        text-align: center;
+    }
+
+    .play-btn-wrap {
+        flex: unset;
+        width: 100%;
+        justify-content: center;
+        padding: 8px 0;
+    }
+
+    /* Prevent canvases from overflowing */
+    canvas {
+        max-width: 100%;
+        height: auto;
+    }
 }
