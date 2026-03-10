@@ -350,6 +350,7 @@ a:hover {
         width: 100%;
         justify-content: center;
         padding: 8px 0;
+        top: 0;
     }
 
     /* Prevent canvases from overflowing */
